@@ -1,13 +1,13 @@
 #ifndef GENRAINBOWTABLEUTILS_HPP
 #define GENRAINBOWTABLEUTILS_HPP
 
+#include "../utils/sha256.h"
 #include <string>
 #include <fstream>
 #include <cstring>
 
-#include "utils/random.h"
-#include "utils/sha256.h"
-#include "utils/reduction.h"
+#include "../utils/random.hpp"
+#include "../utils/reduction.hpp"
 
 namespace rainbow {
 
