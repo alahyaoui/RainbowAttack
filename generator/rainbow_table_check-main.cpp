@@ -10,13 +10,18 @@ using namespace rainbow;
 int main(int argc, char *argv[]){
     auto start = std::chrono::high_resolution_clock::now();
     if (argc != 3 && argc != 4){
+        std::cerr << "Wrong number of arguments: ";
+        for(int i = 0; i < argc; i++){
+            std:cerr << argv[i] << " ";
+        }
+        std::cerr << std::endl;
         std::cerr << "Usage : \"rainbow_table_check-main nb_of_reductions rainbow_table_path, where" << std::endl
                   << "- nb_of_reductions is the number of reduction function to apply," << std::endl
                   << "- rainbow_table_path is the name of the output file where the heads and tails"
                   << " will be stored or you can enters separately each file where " << std::endl
                   << "- heads is the name of the output file where the heads will be stored," << std::endl
                   << "- tails is the name of the output file where the tails will be stored" << std::endl;
-        return 1;
+        return -1;
     }
 
     int nb_of_reductions = std::stoi(argv[1]);

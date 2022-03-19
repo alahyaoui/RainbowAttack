@@ -11,14 +11,18 @@ std::vector<bool> is_pwd_found;
 
 int main(int argc, char *argv[]){
     auto start = std::chrono::high_resolution_clock::now();
-    if(argc != 5)
-    {
+    if(argc != 5){
+        std::cerr << "Wrong number of arguments: ";
+        for(int i = 0; i < argc; i++){
+            std:cerr << argv[i] << " ";
+        }
+        std::cerr << std::endl;
         std::cerr << "Usage : \"rainbow_table_attack-main nb_of_reductions pwd_size rainbow_table_path hash_to_crack_path, where" << std::endl    
             << "- nb_of_reductions the number of reduction function that have been executed to make the a chain of the RT," << std::endl    
             << "- pwd_size the size of the heads of the given RT," << std::endl 
             << "- rainbow_table_path the path of the file of the Rainbow Table," << std::endl
             << "- hash_to_crack_path is the path of the file of hashes to crack" << std::endl;
-        return 1;
+        return -1;
     }
 
     int nb_of_reductions = std::stoi(argv[1]);

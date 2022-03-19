@@ -62,27 +62,27 @@ void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std
         throw std::runtime_error("Output files could not be opened");
 }
 
-void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std::string& of_head_tail){
-    int avancement = 0;
+void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std::string& rainbow_table_path){
+    int state = 0;
 
-    std::ofstream head_tail_file;
-    head_tail_file.open(of_head_tail);
+    std::ofstream rainbow_table_file;
+    rainbow_table_file.open(rainbow_table_path);
 
-    if(head_tail_file.is_open()){
+    if(rainbow_table_file.is_open()){
         for(int i = 0; i < nb_of_chains; i++){
 
             std::string head = generate_head(length);
             
             std::string tail = generate_tail(head, nb_of_reductions);
 
-            head_tail_file << head << ':' << tail << std::endl;
+            rainbow_table_file << head << ':' << tail << std::endl;
 
             if(nb_of_chains > 1 && i % (nb_of_chains/10) == 0){
-                std::cout << "Avancement : "<<  avancement++ << "0%" << std::endl;
+                std::cout << "State : "<<  state++ << "0%" << std::endl;
             }
         }
 
-        head_tail_file.close();
+        rainbow_table_file.close();
     }
     else
         throw std::runtime_error("Output files could not be opened");

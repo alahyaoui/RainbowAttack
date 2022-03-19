@@ -9,6 +9,11 @@ using namespace rainbow;
 int main(int argc, char *argv[]){
     auto start = std::chrono::high_resolution_clock::now();
     if (argc != 5 && argc != 6){
+        std::cerr << "Wrong number of arguments: nbofarguments: " << argc;
+        for(int i = 0; i < argc; i++){
+            std:cerr << argv[i] << " ";
+        }
+        std::cerr << std::endl;
         std::cerr << "Usage : \"rainbow_table-main_gen nb_of_chains nb_of_reduction pwd_size rainbow_table_path, where" << std::endl
                   << "- nb_of_chains is the number of heads and tails that you want to generate," << std::endl
                   << "- nb_of_reductions is the number of reduction function to apply," << std::endl
@@ -17,7 +22,7 @@ int main(int argc, char *argv[]){
                   << " will be stored or you can enters separately each file where " << std::endl
                   << "- heads is the name of the output file where the heads will be stored," << std::endl
                   << "- tails is the name of the output file where the tails will be stored" << std::endl;
-        return 1;
+        return -1;
     }
 
     int nb_of_chains = std::stoi(argv[1]);
