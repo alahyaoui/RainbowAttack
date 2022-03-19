@@ -24,7 +24,7 @@ make all
 ### Rainbow Table Attack
 ./executable/rainbow_table_attack
 
-## Clean
+## Cleaning
 clean executable and tmp files -> make clean
 
 # Supported hashes
