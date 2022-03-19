@@ -1,0 +1,75 @@
+#!/bin/bash
+
+C='\033[44m'
+E='\033[32m\033[1m'
+N='\033[0m'
+clear
+
+echo "(\(*0*) Welcome to Rainbow Attack (*0*)/)"
+echo "------------------------------------"
+
+echo -e "Execution of the ${E}makefile${N}"
+make all
+
+
+# Rainbow Table Geneneration
+echo "Do you want to generate a rainbow table (yes/no) : " 
+#read response
+response = "yes"
+if [$response == "yes"]; then
+
+    echo "Enter the number of chains (association of head and tails) that you want to generate"
+    read nb_of_chains
+
+    echo "Enter the number of reduction function that you want to apply for each chain"
+    read nb_of_reductions
+
+    echo "Enter the password size to crack"
+    read pwd_size
+
+    echo "Enter the path where you want to store the rainbow table"
+    read rainbow_table_path
+
+    echo -e "Execution of the ${E}rainbow table generation${N}"
+    ./executable/rainbow_table_gen $nb_of_chains $nb_of_reduction $pwd_size $rainbow_table_path
+fi
+
+# Rainbow Table Checking
+echo "Do you want to check your rainbow table (yes/no) : " 
+read response
+
+if [$response = "yes"]; then
+
+    echo "Enter the number of reduction function that you applied for each chain"
+    read nb_of_reductions
+
+    echo "Enter the path where you stored your rainbow table"
+    read rainbow_table_path
+
+    echo -e "Execution of the ${E}rainbow table checking${N}"
+    ./executable/rainbow_table_check $nb_of_reduction $rainbow_table_path
+fi
+
+# Rainbow Table Attack
+echo "Do you want to launch a rainbow table attack (yes/no) : " 
+read response
+
+if [$response = "yes"]; then
+
+    echo "Enter the number of reduction function that you applied for each chain"
+    read nb_of_reductions
+
+    echo "Enter the password size to crack"
+    read pwd_size
+
+    echo "Enter the path where you stored your rainbow table"
+    read rainbow_table_path
+
+    echo "Enter the path where you stored the password hashes to crack"
+    read hash_to_crack_path
+
+    echo -e "Execution of the ${E}rainbow table attack${N}"
+    ./executable/rainbow_table_attack $nb_of_reductions $pwd_size $rainbow_table_path $hash_to_crack_path
+fi
+
+echo "Thanks for using my application, Bye (*0*)/)"
