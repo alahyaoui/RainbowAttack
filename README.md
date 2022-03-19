@@ -3,10 +3,10 @@ C++ application that cracks password using a Rainbow Table
 
 # Definition
 
-## Rainbow Table Attack
+### Rainbow Table Attack
 A rainbow table attack is a type of hacking wherein the perpetrator tries to use a rainbow hash table to crack the passwords stored in a database system. A rainbow table is a hash function used in cryptography for storing important data such as passwords in a database.
 
-## Rainbow Table
+### Rainbow Table
 A rainbow table is a precomputed table for caching the output of cryptographic hash functions, usually for cracking password hashes. Tables are usually used in recovering a key derivation function (or credit card numbers, etc.) up to a certain length consisting of a limited set of characters. It is a practical example of a space–time tradeoff, using less computer processing time and more storage than a brute-force attack which calculates a hash on every attempt, but more processing time and less storage than a simple key derivation function with one entry per hash.
 
 # Usage
@@ -52,7 +52,8 @@ tails is the name of the output file where the tails are stored
 **hash_to_crack_path** is the path of the file of hashes to crack
             
 ## Cleaning
-clean executable and tmp files -> **make clean**
+#### clean executable data and tmp files 
+**make clean**
 
 # Supported
 ### Password rule
