@@ -10,7 +10,7 @@ using namespace rainbow;
 int main(int argc, char *argv[]){
     auto start = std::chrono::high_resolution_clock::now();
     if (argc != 3 && argc != 4){
-        std::cerr << "Usage : \"rainbow_table_check-main , where" << std::endl
+        std::cerr << "Usage : \"rainbow_table_check-main nb_of_reductions heads_tails, where" << std::endl
                   << "- nb_of_reductions is the number of reduction function to apply," << std::endl
                   << "- heads_tails is the name of the output file where the heads and the tails"
                   << " will be stored or you can enters separately each file where " << std::endl
