@@ -31,7 +31,6 @@ std::string find_in_chain(const std::string & head, const std::string & hashToCr
     for(size_t i = 1; i < nbOfReduction + 1; i++){
         hash = sha256(pwd);
         if(strcmp(hashToCrack.c_str(), hash.c_str()) == 0){
-            std::cout << "hash trouvé dans la chaine" << std::endl;
             return pwd;
         }
         pwd = reduce(hash, i, pwdSize); 
@@ -59,7 +58,6 @@ std::string find_in_tail_file(const std::string & pwd , const std::string & hash
             if(strcmp(pwd.c_str(), tail.c_str()) == 0){  
                 head = head_tail.substr(0, lineSeparator);
 
-                std::cout << head << " " << pwd << '=' << tail << " tail similaire trouvé !!! je sors de findInTailFile"<< std::endl;
                 std::string pwdInChain = find_in_chain(head, hash, nbOfReduction);
                 if(pwdInChain != "")
                     return pwdInChain;
@@ -90,7 +88,7 @@ bool attack(std::string hash, const int & pwd_size, const int & nb_of_reductions
        if(pwd != ""){
             if(strcmp(sha256(pwd).c_str(), hash.c_str()) == 0){
                 is_found = true;
-                std::cout << "mdp trouvé " << pwd << ":" << hash << std::endl;
+                std::cout << "pwd found " << pwd << ":" << hash << std::endl;
                 break;
             }
         }

@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
 
     int count = 0; 
     for(auto e : is_pwd_found){
-        std::cout << "pwd n*" << count << "found : " << e << std::endl;
+        std::cout << "pwd n*" << count << " found : " << e << std::endl;
         count++;
     }
 
