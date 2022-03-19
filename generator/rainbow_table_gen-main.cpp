@@ -9,11 +9,11 @@ using namespace rainbow;
 int main(int argc, char *argv[]){
     auto start = std::chrono::high_resolution_clock::now();
     if (argc != 5 && argc != 6){
-        std::cerr << "Usage : \"rainbow_table-main_gen nb_of_chains nb_of_reduction pwd_size head_tails, where" << std::endl
+        std::cerr << "Usage : \"rainbow_table-main_gen nb_of_chains nb_of_reduction pwd_size rainbow_table_path, where" << std::endl
                   << "- nb_of_chains is the number of heads and tails that you want to generate," << std::endl
                   << "- nb_of_reductions is the number of reduction function to apply," << std::endl
                   << "- pwd_size is the allowed size of the head," << std::endl
-                  << "- heads_tails is the name of the output file where the heads and the tails"
+                  << "- rainbow_table_path is the name of the output file where the heads and tails"
                   << " will be stored or you can enters separately each file where " << std::endl
                   << "- heads is the name of the output file where the heads will be stored," << std::endl
                   << "- tails is the name of the output file where the tails will be stored" << std::endl;
