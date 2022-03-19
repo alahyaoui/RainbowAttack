@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
             << "- nb_of_reductions the number of reduction function that have been executed to make the a chain of the RT," << std::endl    
             << "- pwd_size the size of the heads of the given RT," << std::endl 
             << "- rainbow_table_path the path of the file of the Rainbow Table," << std::endl
-            << "- hash_to_crack_paths is the path of the file of hashes to crack" << std::endl;
+            << "- hash_to_crack_path is the path of the file of hashes to crack" << std::endl;
         return 1;
     }
 
