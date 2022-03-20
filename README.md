@@ -1,5 +1,5 @@
 # RainbowAttack
-C++ application that cracks password using a Rainbow Table
+C++ application that cracks sha256 hashed passwords using a Rainbow Table
 
 NB: This application has been made for learning purposes. 
 
