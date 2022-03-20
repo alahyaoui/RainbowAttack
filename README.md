@@ -1,5 +1,6 @@
 # RainbowAttack
 C++ application that cracks password using a Rainbow Table
+NB: This application has been made for learning purposes. 
 
 # Definition
 
