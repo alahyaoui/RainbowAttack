@@ -37,7 +37,7 @@ $ make all
 ### Execution
 #### Generation of the Rainbow Table
 ```
-$ ./executable/rainbow_table_gen <nb_of_chains> <nb_of_reduction> <pwd_size> <rainbow_table_path>
+$ ./executable/rainbow_table_gen <nb_of_chains> <length_of_chains> <pwd_size> <rainbow_table_path>
 ```
 
 ##### Where
