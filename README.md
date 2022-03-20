@@ -42,7 +42,7 @@ $ ./executable/rainbow_table_gen <nb_of_chains> <nb_of_reduction> <pwd_size> <ra
 
 ##### Where
 > - **nb_of_chains** is the number of heads and tails that you want to generate
-> - **nb_of_reductions** is the number of reduction function to apply
+> - **length_of_chains** is the length of the chains (head -> tail) of the Rainbow Table
 > - **pwd_size** is the allowed size of the head (head need to be the same size as the size of password that you want to crack)
 > - **rainbow_table_path** is the name of the output file where the heads and the tails will be stored 
 >or you can enters separately each file where
@@ -51,10 +51,10 @@ $ ./executable/rainbow_table_gen <nb_of_chains> <nb_of_reduction> <pwd_size> <ra
 
 #### Checking of the Rainbow Table
 ```
-$ ./executable/rainbow_table_check <nb_of_reductions> <rainbow_table_path>
+$ ./executable/rainbow_table_check <length_of_chains> <rainbow_table_path>
 ```
 ##### Where
-> - **nb_of_reductions** is the number of reduction function to apply
+> - **length_of_chains** is the length of the chains (head -> tail) of the Rainbow Table
 > - **rainbow_table_path** is the name of the output file where the heads and the tails are stored 
 >or you can enters separately each file where 
 >heads is the name of the output file where the heads are stored,
@@ -63,10 +63,10 @@ $ ./executable/rainbow_table_check <nb_of_reductions> <rainbow_table_path>
 
 #### Rainbow Table Attack
 ```
-$ ./executable/rainbow_table_attack <nb_of_reductions> <pwd_size> <rainbow_table_path> <hash_to_crack_path>
+$ ./executable/rainbow_table_attack <length_of_chains> <pwd_size> <rainbow_table_path> <hash_to_crack_path>
 ```
 ##### Where
-> - **nb_of_reductions** the number of reduction function that have been executed to make a chain (head -> tail) of the Rainbow Table
+> - **length_of_chains** is the length of the chains (head -> tail) of the Rainbow Table
 > - **pwd_size** the size of the heads of the given Rainbow Table (You need to have 1 rainbow table by the size of the password that you want to crack)
 > - **rainbow_table_path** the path of the file of the Rainbow Table
 > - **hash_to_crack_path** is the path of the file of hashes to crack
