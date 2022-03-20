@@ -1,17 +1,17 @@
-#include <iostream>
 #include <chrono>
+#include <iostream>
 
 #include "rainbow_table.hpp"
 
 using namespace std;
 using namespace rainbow;
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
     auto start = std::chrono::high_resolution_clock::now();
-    if (argc != 5 && argc != 6){
+    if (argc != 5 && argc != 6) {
         std::cerr << "Wrong number of arguments: nbofarguments: " << argc;
-        for(int i = 0; i < argc; i++){
-            std:cerr << argv[i] << " ";
+        for (int i = 0; i < argc; i++) {
+            std::cerr << argv[i] << " ";
         }
         std::cerr << std::endl;
         std::cerr << "Usage : \"rainbow_table-main_gen nb_of_chains nb_of_reduction pwd_size rainbow_table_path, where" << std::endl
@@ -30,16 +30,16 @@ int main(int argc, char *argv[]){
     int pwd_size = std::stoi(argv[3]);
 
     cout << "You decided to generate " << nb_of_chains << " chains" << endl;
-    cout << "with each "<< nb_of_reductions << " reduction functions applied" << endl;
-    cout << "with each heads of size "<< pwd_size << endl;
+    cout << "with each " << nb_of_reductions << " reduction functions applied" << endl;
+    cout << "with each heads of size " << pwd_size << endl;
 
-    if (argc == 5){
+    if (argc == 5) {
         cout << "in the file " << argv[4] << endl;
         mass_generate(nb_of_chains, nb_of_reductions, pwd_size, argv[4]);
-    }else if (argc == 6){
+    } else if (argc == 6) {
         cout << "in the heads file " << argv[4] << " and the tails file " << argv[5] << endl;
         mass_generate(nb_of_chains, nb_of_reductions, pwd_size, argv[4], argv[5]);
-    }else{
+    } else {
         cout << "error" << endl;
     }
 

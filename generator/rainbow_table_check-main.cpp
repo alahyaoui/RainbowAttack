@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){
     if (argc != 3 && argc != 4){
         std::cerr << "Wrong number of arguments: ";
         for(int i = 0; i < argc; i++){
-            std:cerr << argv[i] << " ";
+            std::cerr << argv[i] << " ";
         }
         std::cerr << std::endl;
         std::cerr << "Usage : \"rainbow_table_check-main nb_of_reductions rainbow_table_path, where" << std::endl
