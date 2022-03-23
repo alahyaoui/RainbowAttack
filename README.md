@@ -1,5 +1,6 @@
 # RainbowAttack
-C++ application that cracks sha256 hashed passwords using a Rainbow Table
+Developed in the context of my cyber security course at Ecole Supérieur d'Informatique (ESI | HE2B) college.
+This C++ application allows you to generate a rainbow table and crack sha256 hashed passwords using a rainbow table previously generated.
 
 NB: This application has been made for learning purposes. 
 
