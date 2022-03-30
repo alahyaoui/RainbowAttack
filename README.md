@@ -55,7 +55,7 @@ $ ./executable/rainbow_table_gen <nb_of_chains> <length_of_chains> <pwd_size> <r
 >heads is the name of the output file where the heads will be stored,
 >tails is the name of the output file where the tails will be stored"
 
-#### Checking of the Rainbow Table
+#### Checking the validity of the Rainbow Table chains
 ```
 $ ./executable/rainbow_table_check <length_of_chains> <rainbow_table_path>
 ```
