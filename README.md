@@ -26,7 +26,12 @@ $ git clone git@github.com:alahyaoui/RainbowAttack.git
 ### Script
 You can execute the Demo bash script it will do everything for you
 ```
-$ ./Demo
+$ bash Demo.sh
+```
+or
+```
+$ chmod +x ./Demo.sh
+$ ./Demo.sh
 ```
 ### Or
 you can do the following if you do not want to use my bash script
