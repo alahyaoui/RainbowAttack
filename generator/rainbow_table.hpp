@@ -11,6 +11,13 @@
 
 namespace rainbow {
 
+/**
+ * Generate a random string of a given length
+ * 
+ * @param length The length of the string to generate.
+ * 
+ * @return a string of length `length` containing random characters from the `char_policy` string.
+ */
 std::string generate_head(int length) {
     static const std::string char_policy = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN1234567890";
     static const int c_len = char_policy.length();
@@ -23,6 +30,14 @@ std::string generate_head(int length) {
     return std::string(str);
 }
 
+/**
+ * Generate a tail from a hashed head by applying reduction functions.
+ * 
+ * @param head The password you want to hash.
+ * @param nb_of_reductions The number of times the password is reduced.
+ * 
+ * @return The tail of the password.
+ */
 std::string generate_tail(const std::string& head, int nb_of_reductions) {
     std::string tail;
     std::string hash = sha256(head);
@@ -38,6 +53,16 @@ std::string generate_tail(const std::string& head, int nb_of_reductions) {
     return std::string(tail);
 }
 
+/**
+ * Generate a number of chains of a given length, with a given number of reductions, and write them to
+ * the output files
+ * 
+ * @param nb_of_chains The number of chains to generate.
+ * @param nb_of_reductions The number of reductions to perform on the head.
+ * @param length The length of the head and tail.
+ * @param of_head the name of the file where the head of the chains will be written
+ * @param of_tail the name of the file where the tail will be written
+ */
 void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std::string& of_head, const std::string& of_tail) {
     std::ofstream head_file;
     head_file.open(of_head);
@@ -60,6 +85,15 @@ void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std
         throw std::runtime_error("Output files could not be opened");
 }
 
+/**
+ * Generate a rainbow table by generating a number of chains of a given length, 
+ * with a given number of reductions, and write them to the output file
+ * 
+ * @param nb_of_chains The number of chains to generate.
+ * @param nb_of_reductions The number of times the password is reduced.
+ * @param length The length of the generated strings.
+ * @param rainbow_table_path The path to the file where the rainbow table will be written.
+ */
 void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std::string& rainbow_table_path) {
     int state = 0;
 
@@ -84,11 +118,28 @@ void mass_generate(int nb_of_chains, int nb_of_reductions, int length, const std
         throw std::runtime_error("Output files could not be opened");
 }
 
-inline bool check_pwd(const std::string& head, const std::string& tail, int nb_of_reductionss) {
-    return generate_tail(head, nb_of_reductionss) == tail;
+/**
+ * Checks if a given head gives by applying the number of reduction foncions the same tail as the given tail
+ * 
+ * @param head the head of the chain.
+ * @param tail the tail of the chain.
+ * @param nb_of_reductions the number of reductions to perform on the head.
+ * 
+ * @return A boolean value.
+ */
+inline bool check_pwd(const std::string& head, const std::string& tail, int nb_of_reductions) {
+    return generate_tail(head, nb_of_reductions) == tail;
 }
 
-double mass_check(int nb_of_reductionss, const std::string& rainbow_table_path) {
+/**
+ * It reads the rainbow table file, checks each chain in the file, and returns the  percentage of valid chains
+ * 
+ * @param nb_of_reductions The number of reductions to perform.
+ * @param rainbow_table_path The path to the rainbow table file.
+ * 
+ * @return The percentage of valid chains.
+ */
+double mass_check(int nb_of_reductions, const std::string& rainbow_table_path) {
     std::ifstream heads_tails_file;
     heads_tails_file.open(rainbow_table_path);
 
@@ -106,7 +157,7 @@ double mass_check(int nb_of_reductionss, const std::string& rainbow_table_path) 
             tail = head_tail.substr(pos + 1);
 
             count++;
-            if (check_pwd(head, tail, nb_of_reductionss))
+            if (check_pwd(head, tail, nb_of_reductions))
                 success++;
         }
 
@@ -117,7 +168,16 @@ double mass_check(int nb_of_reductionss, const std::string& rainbow_table_path) 
         throw std::runtime_error("Input files could not be opened");
 }
 
-double mass_check(int nb_of_reductionss, const std::string& if_head, const std::string& if_tail) {
+/**
+ * It reads the rainbow table file (head file & tail file), checks each chain, and returns the  percentage of valid chains
+ * 
+ * @param nb_of_reductions The number of reductions to perform.
+ * @param if_head The name of the file containing the head of the passwords
+ * @param if_tail The file containing the tail of the passwords.
+ * 
+ * @return The percentage of passwords that were cracked.
+ */
+double mass_check(int nb_of_reductions, const std::string& if_head, const std::string& if_tail) {
     std::ifstream head_file;
     head_file.open(if_head);
 
@@ -132,7 +192,7 @@ double mass_check(int nb_of_reductionss, const std::string& if_head, const std::
         int success = 0;
         while (std::getline(head_file, head) && std::getline(tail_file, tail)) {
             count++;
-            if (check_pwd(head, tail, nb_of_reductionss))
+            if (check_pwd(head, tail, nb_of_reductions))
                 success++;
         }
 
