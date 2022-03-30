@@ -12,6 +12,7 @@ echo "-----------------------------------------"
 echo -e "\nExecution of the ${E}makefile${N}"
 make all
 
+echo -e "\n"
 
 # Rainbow Table Geneneration
 read -r -p "Do you want to generate a rainbow table (yes/no) : " response
@@ -63,6 +64,8 @@ if [ "$response" == "yes" ]; then
     echo -e "\nExecution of the ${E}rainbow table attack${N}"
     ./executable/rainbow_table_attack $nb_of_reductions $pwd_size "$rainbow_table_path" "$hash_to_crack_path"
 fi
+
+echo -e "\n"
 
 echo "-----------------------------------------"
 echo "Thanks for using my application, Bye (*0*)/)"
